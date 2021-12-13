@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Data from "../memesData";
 
 export default function MemeGenerator() {
-  const [memeImage, setMemeImage] = useState("");
+  const [memeImage, setMemeImage] = useState(
+    "https://i.imgflip.com/1g8my4.jpg"
+  );
 
   function getMemeImage(event) {
     event.preventDefault();
