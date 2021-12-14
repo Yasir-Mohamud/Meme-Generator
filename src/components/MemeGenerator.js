@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import Data from "../memesData";
 
 export default function MemeGenerator() {
-  const [memeImage, setMemeImage] = useState(
-    "https://i.imgflip.com/1g8my4.jpg"
-  );
+  const [allMemeImage, setAllMemeImage] = useState(Data);
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
+  });
 
   function getMemeImage(event) {
     event.preventDefault();
-    const memesArray = Data.data.memes;
+    const memesArray = allMemeImage.data.memes;
     const randomNumber = Math.floor(Math.random() * (memesArray.length - 1));
-    return setMemeImage(memesArray[randomNumber].url);
+    return setMeme((prev) => {
+      return (prev = {
+        ...prev,
+        randomImage: memesArray[randomNumber].url,
+      });
+    });
   }
 
   return (
@@ -29,7 +37,7 @@ export default function MemeGenerator() {
           Get a new meme image 🖼
         </button>
       </form>
-      <img className="meme--image" src={memeImage} alt="" />
+      <img className="meme--image" src={meme.randomImage} alt="" />
     </main>
   );
 }
