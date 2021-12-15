@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Data from "../memesData";
 
 export default function MemeGenerator() {
+  // eslint-disable-next-line no-unused-vars
   const [allMemeImage, setAllMemeImage] = useState(Data);
   const [meme, setMeme] = useState({
     topText: "",
